@@ -85,7 +85,7 @@ URL: http://hbase.apache.org/
 Group: Development/Libraries
 Buildroot: %{_topdir}/INSTALL/%{name}-%{version}
 License: APL2
-Source0: %{name}-%{hbase_patched_version}.tar.gz
+Source0: %{name}-%{hbase_version}.tar.gz
 Source1: do-component-build
 Source2: install_hbase.sh
 Source3: hbase.svc
@@ -233,15 +233,15 @@ Requires: redhat-lsb
 The Apache HBase REST gateway
 
 %prep
-%setup -n %{name}-%{hbase_patched_version} 
+%setup -n %{name}-%{hbase_version} 
 
 %build
-env FULL_VERSION=%{hbase_patched_version} bash %{SOURCE1}
+env FULL_VERSION=%{hbase_version} bash %{SOURCE1}
 
 %install
 %__rm -rf $RPM_BUILD_ROOT
 sh %{SOURCE2} \
-	--build-dir=build/hbase-%{hbase_patched_version} \
+	--build-dir=build/hbase-%{hbase_version} \
         --doc-dir=%{doc_hbase} \
         --conf-dir=%{etc_hbase_conf_dist} \
 	--prefix=$RPM_BUILD_ROOT
