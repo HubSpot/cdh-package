@@ -15,7 +15,7 @@
 # limitations under the License.
 
 build_args="clean -Pnative -DskipTests -Dhadoop.profile=23 source:jar install site javadoc:javadoc assembly:assembly $DO_MAVEN_DEPLOY -Dmaven.repo.local=${HOME}/.m2/repository"
-security=true
+security=false
 if $security ; then
     build_args="$build_args -Psecurity"
 fi
