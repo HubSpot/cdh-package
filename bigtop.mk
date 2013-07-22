@@ -50,7 +50,7 @@ HBASE_BASE_VERSION=0.94.8
 HBASE_PKG_VERSION=$(HBASE_BASE_VERSION)
 HBASE_RELEASE_VERSION=hs1
 HBASE_TARBALL_DST=hbase-$(HBASE_BASE_VERSION).tar.gz
-HBASE_TARBALL_SRC=/home/bbeaudreault/hbase/target/$(HBASE_TARBALL_DST)
+HBASE_TARBALL_SRC=/raid0/jenkins-home/workspace/hbase/target/$(HBASE_TARBALL_DST)
 HBASE_DOWNLOAD_PATH=/hbase/hbase-$(HBASE_BASE_VERSION)
 HBASE_SITE=file://
 HBASE_ARCHIVE=file://
@@ -198,7 +198,7 @@ HUE_SITE=http://cloudera.github.com/hue/releases/$(HUE_BASE_VERSION)
 HUE_ARCHIVE=$(HUE_SITE)
 $(eval $(call PACKAGE,hue,HUE))
 
-# DataFu 
+# DataFu
 DATAFU_NAME=datafu
 DATAFU_RELNOTES_NAME=Collection of user-defined functions
 DATAFU_PKG_NAME=pig-udf-datafu
