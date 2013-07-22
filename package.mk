@@ -59,7 +59,7 @@ $(BUILD_DIR)/%/.srpm:
 						--define "$${PKG_NAME_FOR_PKG}_base_version $($(PKG)_BASE_VERSION)" \
 						--define "$${PKG_NAME_FOR_PKG}_version $($(PKG)_PKG_VERSION)$(BIGTOP_BUILD_STAMP)" \
 						--define "$${PKG_NAME_FOR_PKG}_release $($(PKG)_RELEASE_VERSION)%{?dist}" \
-						--define "hubspot_version $(HUBSPOT_VERSION)"
+						--define "hubspot_version $(HUBSPOT_VERSION)" \
 						-bs \
 						--nodeps \
 						--buildroot="$(PKG_BUILD_DIR)/rpm/INSTALL" \
@@ -78,7 +78,7 @@ $(BUILD_DIR)/%/.rpm:
 						--define "$($(PKG)_NAME)_base_version $($(PKG)_BASE_VERSION)" \
 						--define "$($(PKG)_NAME)_version $($(PKG)_PKG_VERSION)$(BIGTOP_BUILD_STAMP)" \
 						--define "$($(PKG)_NAME)_release $($(PKG)_RELEASE_VERSION)%{?dist}" \
-						--define "hubspot_version $(HUBSPOT_VERSION)"
+						--define "hubspot_version $(HUBSPOT_VERSION)" \
 						--rebuild $${SRCRPM}
 	cp -r $(PKG_BUILD_DIR)/rpm/RPMS/*/* $($(PKG)_OUTPUT_DIR)/
 	touch $@
