@@ -80,12 +80,12 @@
 Name: hbase
 Version: %{hbase_version}
 Release: %{hbase_release}
-Summary: HBase is the Hadoop database. Use it when you need random, realtime read/write access to your Big Data. This project's goal is the hosting of very large tables -- billions of rows X millions of columns -- atop clusters of commodity hardware. 
+Summary: HBase is the Hadoop database. Use it when you need random, realtime read/write access to your Big Data. This project's goal is the hosting of very large tables -- billions of rows X millions of columns -- atop clusters of commodity hardware.
 URL: http://hbase.apache.org/
 Group: Development/Libraries
 Buildroot: %{_topdir}/INSTALL/%{name}-%{version}
 License: APL2
-Source0: %{name}-%{hbase_version}.tar.gz
+Source0: %{name}-%{hbase_version}-%{hubspot_version}.tar.gz
 Source1: do-component-build
 Source2: install_hbase.sh
 Source3: hbase.svc
@@ -104,7 +104,7 @@ Requires: sh-utils
 %endif
 
 
-%description 
+%description
 HBase is an open-source, distributed, column-oriented store modeled after Google' Bigtable: A Distributed Storage System for Structured Data by Chang et al. Just as Bigtable leverages the distributed data storage provided by the Google File System, HBase provides Bigtable-like capabilities on top of Hadoop. HBase includes:
 
     * Convenient base classes for backing Hadoop MapReduce jobs with HBase tables
@@ -166,7 +166,7 @@ Requires: redhat-lsb
 %endif
 
 
-%description regionserver 
+%description regionserver
 HRegionServer makes a set of HRegions available to clients. It checks in with the HMaster. There are many HRegionServers in a single HBase deployment.
 
 %package thrift
@@ -233,7 +233,7 @@ Requires: redhat-lsb
 The Apache HBase REST gateway
 
 %prep
-%setup -n %{name}-%{hbase_version} 
+%setup -n %{name}-%{hbase_version}
 
 %build
 env FULL_VERSION=%{hbase_version} bash %{SOURCE1}
@@ -301,7 +301,7 @@ fi
 #######################
 #### FILES SECTION ####
 #######################
-%files 
+%files
 %defattr(-,hbase,hbase)
 %{logs_hbase}
 %{pids_hbase}

@@ -14,7 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-build_args="clean -Pnative -DskipTests -Dhadoop.profile=23 source:jar install javadoc:javadoc assembly:assembly $DO_MAVEN_DEPLOY"
+build_args="clean -Pnative -DskipTests -Dhubspot.version=$HUBSPOT_VERSION -Dhadoop.profile=mr1 source:jar install javadoc:javadoc assembly:assembly $DO_MAVEN_DEPLOY"
 security=false
 if $security ; then
     build_args="$build_args -Psecurity"

@@ -59,6 +59,7 @@ $(BUILD_DIR)/%/.srpm:
 						--define "$${PKG_NAME_FOR_PKG}_base_version $($(PKG)_BASE_VERSION)" \
 						--define "$${PKG_NAME_FOR_PKG}_version $($(PKG)_PKG_VERSION)$(BIGTOP_BUILD_STAMP)" \
 						--define "$${PKG_NAME_FOR_PKG}_release $($(PKG)_RELEASE_VERSION)%{?dist}" \
+						--define "hubspot_version $(HUBSPOT_VERSION)"
 						-bs \
 						--nodeps \
 						--buildroot="$(PKG_BUILD_DIR)/rpm/INSTALL" \
@@ -77,6 +78,7 @@ $(BUILD_DIR)/%/.rpm:
 						--define "$($(PKG)_NAME)_base_version $($(PKG)_BASE_VERSION)" \
 						--define "$($(PKG)_NAME)_version $($(PKG)_PKG_VERSION)$(BIGTOP_BUILD_STAMP)" \
 						--define "$($(PKG)_NAME)_release $($(PKG)_RELEASE_VERSION)%{?dist}" \
+						--define "hubspot_version $(HUBSPOT_VERSION)"
 						--rebuild $${SRCRPM}
 	cp -r $(PKG_BUILD_DIR)/rpm/RPMS/*/* $($(PKG)_OUTPUT_DIR)/
 	touch $@
@@ -170,7 +172,7 @@ $(2)_DOWNLOAD_DST = $(DL_DIR)/$($(2)_TARBALL_DST)
 # test that the download url will return http 200.  If it does not, use the ARCHIVE url instead of the MIRROR SITE url
 ifneq ($$(shell curl -o /dev/null --silent --head --write-out '%{http_code}' $$($(2)_DOWNLOAD_URL)),200)
 	$(2)_DOWNLOAD_URL = $($(2)_ARCHIVE)/$($(2)_TARBALL_SRC)
-endif 
+endif
 
 $(2)_TARGET_DL       = $$($(2)_BUILD_DIR)/.download
 $(2)_TARGET_TAR      = $$($(2)_BUILD_DIR)/.tar
