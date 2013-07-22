@@ -70,7 +70,7 @@
 %endif
 
 
-%define doc_hbase %{_docdir}/%{name}-%{hbase_version}
+%define doc_hbase %{_docdir}/%{name}-%{hbase_version}-%{hubspot_version}
 %global initd_dir %{_sysconfdir}/rc.d/init.d
 %define alternatives_cmd alternatives
 
@@ -233,15 +233,15 @@ Requires: redhat-lsb
 The Apache HBase REST gateway
 
 %prep
-%setup -n %{name}-%{hbase_version}
+%setup -n %{name}-%{hbase_version}-%{hubspot_version}
 
 %build
-env FULL_VERSION=%{hbase_version} bash %{SOURCE1}
+env FULL_VERSION=%{hbase_version}-%{hubspot_version} bash %{SOURCE1}
 
 %install
 %__rm -rf $RPM_BUILD_ROOT
 sh %{SOURCE2} \
-	--build-dir=build/hbase-%{hbase_version} \
+	--build-dir=build/hbase-%{hbase_version}-%{hubspot_version} \
         --doc-dir=%{doc_hbase} \
         --conf-dir=%{etc_hbase_conf_dist} \
 	--prefix=$RPM_BUILD_ROOT
